@@ -43,5 +43,23 @@ const bookStore = {
     ]
 }
 
-// Write your code here!
+const header = document.querySelector('#header');
+if (header) {
+  header.textContent = bookStore.name;
+}
+
+const bookList = document.querySelector('#book-list');
+if (bookList) {
+  bookList.innerHTML = '';
+
+  bookStore.books.forEach((book) => {
+    const listItem = document.createElement('li');
+    listItem.innerHTML = `
+      <h3>${book.title}</h3>
+      <p>${book.author}</p>
+      <img src="${book.imageUrl}" alt="${book.title}">
+    `;
+    bookList.appendChild(listItem);
+  });
+}
 
